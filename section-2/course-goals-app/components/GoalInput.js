@@ -10,7 +10,10 @@ const GoalInput = ({ setGoals }) => {
 
   const addInputText = () => {
     if (inputText !== "") {
-      setGoals((goals) => [...goals, inputText]);
+      setGoals((goals) => [
+        ...goals,
+        { id: Math.random().toString(), name: inputText },
+      ]);
     }
     setInputText("");
   };

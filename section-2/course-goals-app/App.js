@@ -8,21 +8,28 @@ import GoalItem from "./components/GoalItem";
 export default function App() {
   const [goals, setGoals] = useState([]);
 
+  const handleDeleteGoalItem = (id) => {
+    setGoals((currentGoals) => {
+      return currentGoals.filter((goal) => goal.id !== id);
+    });
+  };
+
   return (
-    <View style={styles.appContainer}>
-      <StatusBar
-        backgroundColor={"#facc15"}
-        barStyle={"dark-content"}
-        translucent={false}
-      />
-      <Icon name="home" size={48} color="#facc15"></Icon>
+    <>
+      <StatusBar style="dark" backgroundColor="#facc15" translucent={false} />
+      <View style={styles.appContainer}>
+        <Icon name="home" size={48} color="#facc15"></Icon>
 
-      {/* input box  */}
-      <GoalInput setGoals={setGoals}></GoalInput>
+        {/* input box  */}
+        <GoalInput setGoals={setGoals}></GoalInput>
 
-      {/* course goal item  */}
-      <GoalItem goals={goals}></GoalItem>
-    </View>
+        {/* course goal item  */}
+        <GoalItem
+          goals={goals}
+          handleDeleteGoalItem={handleDeleteGoalItem}
+        ></GoalItem>
+      </View>
+    </>
   );
 }
 
