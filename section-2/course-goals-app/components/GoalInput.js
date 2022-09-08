@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Button, TextInput, View, StyleSheet, Modal } from "react-native";
+import {
+  Button,
+  TextInput,
+  View,
+  StyleSheet,
+  Modal,
+  ImageBackground,
+} from "react-native";
 
 const GoalInput = ({ setGoals, modalIsVisible, setModalIsVisible }) => {
   const [inputText, setInputText] = useState("");
@@ -25,29 +32,36 @@ const GoalInput = ({ setGoals, modalIsVisible, setModalIsVisible }) => {
       animationType="slide"
       style={{ backgroundColor: "#ed0b53" }}
     >
-      <View style={styles.inputContainer}>
-        <TextInput
-          onChangeText={getInputText}
-          style={styles.inputText}
-          value={inputText}
-          placeholder="Enter your course goal!"
-          placeholderTextColor="#d1bebe"
-        ></TextInput>
-        {/* btn container  */}
-        <View style={styles.btnContainer}>
-          <Button
-            onPress={addInputText}
-            title="Add Goal"
-            color="#dbae0d"
-          ></Button>
+      <ImageBackground
+        style={styles.bgImage}
+        source={require("../assets/images/goalBG.jpg")}
+        resizeMode="cover"
+        color="red"
+      >
+        <View style={styles.inputContainer}>
+          <TextInput
+            onChangeText={getInputText}
+            style={styles.inputText}
+            value={inputText}
+            placeholder="Enter your course goal!"
+            placeholderTextColor="#483d8b"
+          ></TextInput>
+          {/* btn container  */}
+          <View style={styles.btnContainer}>
+            <Button
+              onPress={addInputText}
+              title="Add Goal"
+              color="#dbae0d"
+            ></Button>
 
-          <Button
-            onPress={() => setModalIsVisible(false)}
-            title="Cancel"
-            color="red"
-          ></Button>
+            <Button
+              onPress={() => setModalIsVisible(false)}
+              title="Cancel"
+              color="red"
+            ></Button>
+          </View>
         </View>
-      </View>
+      </ImageBackground>
     </Modal>
   );
 };
@@ -57,20 +71,21 @@ export default GoalInput;
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    marginTop: 50,
+    marginLeft: 5,
     alignItems: "center",
     width: "100%",
     borderBottomColor: "#fff",
     paddingBottom: 20,
     borderBottomWidth: 2,
-    backgroundColor: "#ed0b53",
+    // backgroundColor: "#ed0b53",
   },
   inputText: {
-    borderColor: "#facc15",
-    color: "#fff",
+    backgroundColor: "#fff",
+    color: "#000000",
     fontWeight: "bold",
     letterSpacing: 1,
-    borderWidth: 2,
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 4,
@@ -85,5 +100,9 @@ const styles = StyleSheet.create({
     width: "50%",
     justifyContent: "space-between",
     marginTop: 10,
+  },
+  bgImage: {
+    flex: 1,
+    justifyContent: "center",
   },
 });
