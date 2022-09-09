@@ -1,43 +1,45 @@
 import { useState } from "react";
 import { View, StyleSheet, TextInput, Text, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
-import {
-  darkColor,
-  primaryColor,
-  secondaryColor,
-  whiteColor,
-} from "../constants/colors";
+import { darkColor, secondaryColor } from "../constants/colors";
 
-const StartGameScreen = () => {
+const StartGameScreen = ({ setUserNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState("");
 
   const handleEnteredNumber = (pressedNumber) => {
     setEnteredNumber(pressedNumber);
   };
-
   const resetEnteredNumber = () => {
     setEnteredNumber(null);
   };
+
   const confirmEnteredNumber = () => {
-    if (isNaN(enteredNumber) || enteredNumber === "" || enteredNumber <= 0) {
+    if (isNaN(enteredNumber) || enteredNumber <= 0 || enteredNumber > 99) {
       Alert.alert(
         "Invalid number!",
         "Number has to be a number between 1 to 99",
         [
           {
             text: "Ask me later",
-            onPress: () => console.log("Ask me later pressed"),
+            style: "destructive",
+            onPress: () => setEnteredNumber(""),
           },
           {
             text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
+            style: "destructive",
+            onPress: () => setEnteredNumber(""),
             style: "cancel",
           },
-          { text: "OK", onPress: () => console.log("OK Pressed") },
+          {
+            text: "OK",
+            style: "destructive",
+            onPress: () => setEnteredNumber(""),
+          },
         ]
       );
+    } else {
+      setUserNumber(enteredNumber);
     }
-    // --------------------------------
   };
 
   return (
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     fontSize: 25,
     textAlign: "center",
-    color: whiteColor,
+    color: secondaryColor,
   },
   btnContainer: {
     flexDirection: "row",
