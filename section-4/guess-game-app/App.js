@@ -12,7 +12,9 @@ export default function App() {
   let screen = <StartGameScreen setUserNumber={setUserNumber} />;
 
   if (userNumber) {
-    screen = <GameScreen userNumber={userNumber} />;
+    screen = (
+      <GameScreen userNumber={userNumber} setUserNumber={setUserNumber} />
+    );
   }
 
   return (

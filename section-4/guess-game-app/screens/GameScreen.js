@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Alert } from "react-native";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/PrimaryButton";
 import Title from "../components/Title";
-import { primaryColor, secondaryColor, whiteColor } from "../constants/colors";
+import { accentColor, primaryColor, whiteColor } from "../constants/colors";
 
 // -----------generate random number-------------
 function generateRandomNumber(min, max, exclude) {
@@ -16,10 +16,11 @@ function generateRandomNumber(min, max, exclude) {
   }
 }
 
-const GameScreen = ({ userNumber }) => {
+const GameScreen = ({ userNumber, setUserNumber }) => {
   const initialGuess = generateRandomNumber(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
+  // -------generate new random nmr----------
   const nextRandomNumber = (direction) => {
     let maxBoundary = 100;
     let minBoundary = 1;
@@ -28,7 +29,7 @@ const GameScreen = ({ userNumber }) => {
       (direction === "greater" && currentGuess > userNumber)
     ) {
       Alert.alert("Don't lie!", "You know that this is wrong", [
-        { text: "Sorry!", style: "cencel" },
+        { text: "Sorry!", style: "cancel" },
       ]);
       return;
     }
@@ -46,6 +47,11 @@ const GameScreen = ({ userNumber }) => {
     setCurrentGuess(newRndNum);
   };
 
+  // -----------game over btn--------
+  const handleGameOver = () => {
+    setUserNumber("");
+  };
+
   return (
     <View style={styles.container}>
       <Title>Opponent's Guess</Title>
@@ -54,16 +60,23 @@ const GameScreen = ({ userNumber }) => {
 
       <View style={styles.btnContainer}>
         <PrimaryButton
-          bgColor={"#ff1493"}
+          bgColor={accentColor}
           onPress={nextRandomNumber.bind(this, "greater")}
         >
           +
         </PrimaryButton>
         <PrimaryButton
-          bgColor={"#ff1493"}
+          bgColor={accentColor}
           onPress={nextRandomNumber.bind(this, "lower")}
         >
           -
+        </PrimaryButton>
+      </View>
+
+      {/* -------Game over btn---------- */}
+      <View style={styles.gameOverButton}>
+        <PrimaryButton bgColor={primaryColor} onPress={handleGameOver}>
+          Game Over
         </PrimaryButton>
       </View>
     </View>
@@ -90,6 +103,10 @@ const styles = StyleSheet.create({
   btnContainer: {
     flexDirection: "row",
     justifyContent: "center",
+    alignItems: "center",
+  },
+  gameOverButton: {
+    marginTop: 20,
     alignItems: "center",
   },
 });

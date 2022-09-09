@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
   btnContainer: {
     width: 100,
     alignItems: "center",
-    paddingVertical: 9,
+    paddingVertical: 10,
     paddingHorizontal: 5,
   },
   btnText: {
     color: whiteColor,
-    fontSize: 14,
+    fontSize: 17,
     fontWeight: "bold",
   },
 });

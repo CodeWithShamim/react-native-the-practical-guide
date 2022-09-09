@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, StyleSheet, TextInput, Text, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
-import { darkColor, secondaryColor } from "../constants/colors";
+import { accentColor, darkColor, secondaryColor } from "../constants/colors";
 
 const StartGameScreen = ({ setUserNumber }) => {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -55,7 +55,7 @@ const StartGameScreen = ({ setUserNumber }) => {
         autoCorrect={false}
       ></TextInput>
       <View style={styles.btnContainer}>
-        <PrimaryButton onPress={resetEnteredNumber} bgColor={"#ff1493"}>
+        <PrimaryButton onPress={resetEnteredNumber} bgColor={accentColor}>
           Reset
         </PrimaryButton>
         <PrimaryButton onPress={confirmEnteredNumber} bgColor={"#00bfff"}>
