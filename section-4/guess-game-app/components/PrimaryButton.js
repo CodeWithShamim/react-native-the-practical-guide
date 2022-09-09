@@ -1,9 +1,12 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { secondaryColor } from "../constants/colors";
+import { whiteColor } from "../constants/colors";
 
-const PrimaryButton = ({ children, bgColor }) => {
+const PrimaryButton = ({ children, bgColor, onPress }) => {
   return (
-    <TouchableOpacity style={{ backgroundColor: bgColor, borderRadius: 3 }}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={{ backgroundColor: bgColor, borderRadius: 16 }}
+    >
       <View style={styles.btnContainer}>
         <Text style={styles.btnText}>{children}</Text>
       </View>
@@ -18,10 +21,10 @@ const styles = StyleSheet.create({
     width: 100,
     alignItems: "center",
     paddingVertical: 5,
-    paddingHorizontal: 3,
+    paddingHorizontal: 5,
   },
   btnText: {
-    color: secondaryColor,
+    color: whiteColor,
     fontSize: 14,
     fontWeight: "bold",
   },
