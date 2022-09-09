@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Alert } from "react-native";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/PrimaryButton";
 import Title from "../components/Title";
-import { secondaryColor, whiteColor } from "../constants/colors";
+import { primaryColor, secondaryColor, whiteColor } from "../constants/colors";
 
 // -----------generate random number-------------
 function generateRandomNumber(min, max, exclude) {
@@ -20,6 +20,32 @@ const GameScreen = ({ userNumber }) => {
   const initialGuess = generateRandomNumber(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
+  const nextRandomNumber = (direction) => {
+    let maxBoundary = 100;
+    let minBoundary = 1;
+    if (
+      (direction === "lower" && currentGuess < userNumber) ||
+      (direction === "greater" && currentGuess > userNumber)
+    ) {
+      Alert.alert("Don't lie!", "You know that this is wrong", [
+        { text: "Sorry!", style: "cencel" },
+      ]);
+      return;
+    }
+
+    if (direction === "lower") {
+      maxBoundary = currentGuess;
+    } else {
+      minBoundary = currentGuess + 1;
+    }
+    const newRndNum = generateRandomNumber(
+      minBoundary,
+      maxBoundary,
+      currentGuess
+    );
+    setCurrentGuess(newRndNum);
+  };
+
   return (
     <View style={styles.container}>
       <Title>Opponent's Guess</Title>
@@ -27,8 +53,18 @@ const GameScreen = ({ userNumber }) => {
       <Text style={styles.headTitle}>Higher or lower?</Text>
 
       <View style={styles.btnContainer}>
-        <PrimaryButton bgColor={secondaryColor}>+</PrimaryButton>
-        <PrimaryButton bgColor={secondaryColor}>-</PrimaryButton>
+        <PrimaryButton
+          bgColor={"#ff1493"}
+          onPress={nextRandomNumber.bind(this, "greater")}
+        >
+          +
+        </PrimaryButton>
+        <PrimaryButton
+          bgColor={"#ff1493"}
+          onPress={nextRandomNumber.bind(this, "lower")}
+        >
+          -
+        </PrimaryButton>
       </View>
     </View>
   );
@@ -53,9 +89,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  plusBtn: {
-    fontSize: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

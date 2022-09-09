@@ -5,7 +5,7 @@ const PrimaryButton = ({ children, bgColor, onPress }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={{ backgroundColor: bgColor, borderRadius: 16 }}
+      style={{ backgroundColor: bgColor, borderRadius: 16, marginLeft: 5 }}
     >
       <View style={styles.btnContainer}>
         <Text style={styles.btnText}>{children}</Text>
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   btnContainer: {
     width: 100,
     alignItems: "center",
-    paddingVertical: 5,
+    paddingVertical: 9,
     paddingHorizontal: 5,
   },
   btnText: {
