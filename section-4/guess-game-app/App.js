@@ -20,7 +20,7 @@ export default function App() {
           <StartGameScreen></StartGameScreen>
         </ImageBackground>
       </LinearGradient>
-      <StatusBar style="light" translucent={false} />
+      <StatusBar style="light" />
     </View>
   );
 }
