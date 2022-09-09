@@ -13,8 +13,11 @@ const GoalItem = ({ goals, handleDeleteGoalItem }) => {
         return (
           <Pressable
             android_ripple={{ color: "#ffffff" }}
-            // style={({ pressed }) => pressed && styles.pressedStyle}
-            style={styles.goalsContainer}
+            style={({ pressed }) =>
+              pressed
+                ? [styles.goalsContainer, styles.pressedStyle]
+                : styles.goalsContainer
+            }
           >
             <View style={{ flexDirection: "row" }}>
               <Icon name="rocket" size={20} color="purple"></Icon>

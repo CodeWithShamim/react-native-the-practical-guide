@@ -36,7 +36,7 @@ const GoalInput = ({ setGoals, modalIsVisible, setModalIsVisible }) => {
         style={styles.bgImage}
         source={require("../assets/images/goalBG.jpg")}
         resizeMode="cover"
-        color="red"
+        imageStyle={{ opacity: 1 }}
       >
         <View style={styles.inputContainer}>
           <TextInput
