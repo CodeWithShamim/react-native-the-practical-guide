@@ -1,11 +1,35 @@
-import { Text } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
+import PrimaryButton from "../components/PrimaryButton";
+import { accentColor } from "../constants/colors";
 
-const EndGameScreen = () => {
+const EndGameScreen = ({ setUserNumber, setGameIsOver }) => {
+  const hanldeStartGameAgain = () => {
+    setUserNumber("");
+    setGameIsOver(false);
+  };
+
   return (
-    <View>
+    <View style={styles.container}>
       <Text>EndGameScreen</Text>
+      <View style={styles.btnContainer}>
+        <PrimaryButton bgColor={accentColor} onPress={hanldeStartGameAgain}>
+          Start Again
+        </PrimaryButton>
+      </View>
     </View>
   );
 };
 
 export default EndGameScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  btnContainer: {
+    width: "100%",
+    alignItems: "center",
+  },
+});

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { View, StyleSheet, TextInput, Text, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
+import Title from "../components/Title";
 import { accentColor, darkColor, secondaryColor } from "../constants/colors";
 
 const StartGameScreen = ({ setUserNumber }) => {
@@ -43,24 +44,27 @@ const StartGameScreen = ({ setUserNumber }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.headText}>Enter Your Number</Text>
-      <TextInput
-        style={styles.inputContainer}
-        maxLength={2}
-        value={enteredNumber}
-        onChangeText={handleEnteredNumber}
-        keyboardType="number-pad"
-        autoCapitalize="none"
-        autoCorrect={false}
-      ></TextInput>
-      <View style={styles.btnContainer}>
-        <PrimaryButton onPress={resetEnteredNumber} bgColor={accentColor}>
-          Reset
-        </PrimaryButton>
-        <PrimaryButton onPress={confirmEnteredNumber} bgColor={"#00bfff"}>
-          Confirm
-        </PrimaryButton>
+    <View style={{ marginTop: 100 }}>
+      <Title>Guess Your Number</Title>
+      <View style={styles.container}>
+        <Text style={styles.headText}>Enter Your Number</Text>
+        <TextInput
+          style={styles.inputContainer}
+          maxLength={2}
+          value={enteredNumber}
+          onChangeText={handleEnteredNumber}
+          keyboardType="number-pad"
+          autoCapitalize="none"
+          autoCorrect={false}
+        ></TextInput>
+        <View style={styles.btnContainer}>
+          <PrimaryButton onPress={resetEnteredNumber} bgColor={accentColor}>
+            Reset
+          </PrimaryButton>
+          <PrimaryButton onPress={confirmEnteredNumber} bgColor={"#00bfff"}>
+            Confirm
+          </PrimaryButton>
+        </View>
       </View>
     </View>
   );
@@ -74,7 +78,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: darkColor,
     paddingVertical: 15,
-    marginTop: 100,
+    marginTop: 30,
     marginHorizontal: 10,
     borderRadius: 10,
     shadowColor: "#000000",

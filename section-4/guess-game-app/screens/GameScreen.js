@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, StyleSheet, Text, Alert } from "react-native";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/PrimaryButton";
@@ -16,7 +16,7 @@ function generateRandomNumber(min, max, exclude) {
   }
 }
 
-const GameScreen = ({ userNumber, setUserNumber }) => {
+const GameScreen = ({ userNumber, setUserNumber, setGameIsOver }) => {
   const initialGuess = generateRandomNumber(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
@@ -50,7 +50,18 @@ const GameScreen = ({ userNumber, setUserNumber }) => {
   // -----------game over btn--------
   const handleGameOver = () => {
     setUserNumber("");
+    setGameIsOver(true);
   };
+
+  // game over
+  useEffect(() => {
+    const parseCurrentGuess = parseInt(currentGuess);
+    const parseUserNumber = parseInt(userNumber);
+    if (parseCurrentGuess === parseUserNumber) {
+      console.log("done");
+      setGameIsOver(true);
+    }
+  }, [currentGuess, userNumber, setGameIsOver]);
 
   return (
     <View style={styles.container}>

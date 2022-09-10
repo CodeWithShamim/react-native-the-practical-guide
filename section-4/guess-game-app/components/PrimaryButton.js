@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { whiteColor } from "../constants/colors";
 
 const PrimaryButton = ({ children, bgColor, onPress }) => {
@@ -7,9 +7,7 @@ const PrimaryButton = ({ children, bgColor, onPress }) => {
       onPress={onPress}
       style={{ backgroundColor: bgColor, borderRadius: 16, marginLeft: 5 }}
     >
-      <View style={styles.btnContainer}>
-        <Text style={styles.btnText}>{children}</Text>
-      </View>
+      <Text style={styles.btnText}>{children}</Text>
     </TouchableOpacity>
   );
 };
@@ -17,15 +15,13 @@ const PrimaryButton = ({ children, bgColor, onPress }) => {
 export default PrimaryButton;
 
 const styles = StyleSheet.create({
-  btnContainer: {
-    width: 100,
-    alignItems: "center",
-    paddingVertical: 10,
-    paddingHorizontal: 5,
-  },
   btnText: {
+    width: 120,
     color: whiteColor,
     fontSize: 17,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
     fontWeight: "bold",
+    textAlign: "center",
   },
 });
