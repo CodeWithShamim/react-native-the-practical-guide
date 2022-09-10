@@ -13,8 +13,8 @@ export default NumberContainer;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60,
-    marginHorizontal: 60,
+    marginTop: 30,
+    marginHorizontal: 10,
   },
   numberText: {
     textAlign: "center",

@@ -61,7 +61,10 @@ const StartGameScreen = ({ setUserNumber }) => {
           <PrimaryButton onPress={resetEnteredNumber} bgColor={accentColor}>
             Reset
           </PrimaryButton>
-          <PrimaryButton onPress={confirmEnteredNumber} bgColor={"#00bfff"}>
+          <PrimaryButton
+            onPress={confirmEnteredNumber}
+            bgColor={secondaryColor}
+          >
             Confirm
           </PrimaryButton>
         </View>
