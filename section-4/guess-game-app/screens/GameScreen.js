@@ -19,12 +19,11 @@ const GameScreen = ({ userNumber, setUserNumber, setGameIsOver }) => {
   const initialGuess = generateRandomNumber(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
-  // game over
+  // -------------------game over------------------------
   useEffect(() => {
     const parseCurrentGuess = parseInt(currentGuess);
     const parseUserNumber = parseInt(userNumber);
     if (parseCurrentGuess === parseUserNumber) {
-      console.log("done");
       setGameIsOver(true);
     }
   }, [currentGuess, userNumber, setGameIsOver]);

@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Alert } from "react-native";
 import { accentColor, primaryColor, whiteColor } from "../../constants/colors";
 import PrimaryButton from "../PrimaryButton";
+import { AntDesign } from "@expo/vector-icons";
 
 const GameScreenCard = ({
   currentGuess,
@@ -51,19 +52,23 @@ const GameScreenCard = ({
           bgColor={accentColor}
           onPress={nextRandomNumber.bind(this, "greater")}
         >
-          +
+          <AntDesign name="plus" size={24} color="white" />
         </PrimaryButton>
         <PrimaryButton
           bgColor={accentColor}
           onPress={nextRandomNumber.bind(this, "lower")}
         >
-          -
+          <AntDesign name="minus" size={24} color="white" />
         </PrimaryButton>
       </View>
 
       {/* -------Game over btn---------- */}
       <View style={styles.gameOverButton}>
-        <PrimaryButton bgColor={primaryColor} onPress={handleGameOver}>
+        <PrimaryButton
+          style={styles.primaryButton}
+          bgColor={primaryColor}
+          onPress={handleGameOver}
+        >
           Game Over
         </PrimaryButton>
       </View>
@@ -90,5 +95,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: "center",
     justifyContent: "center",
+  },
+  primaryButton: {
+    width: 330,
+    paddingVertical: 10,
   },
 });

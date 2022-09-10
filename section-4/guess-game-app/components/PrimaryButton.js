@@ -1,13 +1,13 @@
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { whiteColor } from "../constants/colors";
 
-const PrimaryButton = ({ children, bgColor, onPress }) => {
+const PrimaryButton = ({ children, bgColor, onPress, style }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={{ backgroundColor: bgColor, borderRadius: 16, marginLeft: 5 }}
     >
-      <Text style={styles.btnText}>{children}</Text>
+      <Text style={[styles.btnText, style]}>{children}</Text>
     </TouchableOpacity>
   );
 };
