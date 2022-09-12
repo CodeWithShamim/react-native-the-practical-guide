@@ -13,6 +13,9 @@ export default function App() {
   const [gameIsOver, setGameIsOver] = useState(false);
   const [fontsLoaded] = useFonts({
     "poppins-bold": require("./assets/fonts/Poppins-Bold.ttf"),
+    "poppins-italic": require("./assets/fonts/Poppins-Italic.ttf"),
+    "poppins-light": require("./assets/fonts/Poppins-Light.ttf"),
+    "poppins-semibold": require("./assets/fonts/Poppins-SemiBold.ttf"),
   });
 
   if (!fontsLoaded) {
