@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, useWindowDimensions } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 import { accentColor } from "../constants/colors";
 
@@ -7,12 +7,19 @@ const EndGameScreen = ({ setUserNumber, setGameIsOver }) => {
     setUserNumber("");
     setGameIsOver(false);
   };
+  const [height, width] = useWindowDimensions();
+
+  console.log(width, height);
 
   return (
     <View style={styles.container}>
       <Text>EndGameScreen</Text>
       <View style={styles.btnContainer}>
-        <PrimaryButton bgColor={accentColor} onPress={hanldeStartGameAgain}>
+        <PrimaryButton
+          style={styles.btnContainer}
+          bgColor={accentColor}
+          onPress={hanldeStartGameAgain}
+        >
           Start Again
         </PrimaryButton>
       </View>
@@ -29,7 +36,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   btnContainer: {
-    width: "100%",
+    width: 300,
     alignItems: "center",
   },
 });

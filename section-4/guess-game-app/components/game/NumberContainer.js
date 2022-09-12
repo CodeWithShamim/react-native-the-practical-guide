@@ -14,7 +14,7 @@ export default NumberContainer;
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    marginHorizontal: 10,
+    marginHorizontal: 70,
   },
   numberText: {
     textAlign: "center",

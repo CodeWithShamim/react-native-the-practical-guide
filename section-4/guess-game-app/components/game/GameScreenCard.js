@@ -80,6 +80,7 @@ export default GameScreenCard;
 
 const styles = StyleSheet.create({
   headTitle: {
+    fontFamily: "poppins-bold",
     fontSize: 20,
     marginVertical: 20,
     fontWeight: "bold",

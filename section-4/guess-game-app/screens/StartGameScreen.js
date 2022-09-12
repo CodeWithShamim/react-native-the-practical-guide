@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     width: "20%",
     borderRadius: 2,
     borderBottomColor: secondaryColor,
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
     marginBottom: 15,
     fontSize: 25,
     textAlign: "center",

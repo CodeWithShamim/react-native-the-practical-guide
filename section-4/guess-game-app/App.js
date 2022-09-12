@@ -1,15 +1,23 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, Text, ImageBackground } from "react-native";
 import { primaryColor, secondaryColor } from "./constants/colors";
 import EndGameScreen from "./screens/EndGameScreen";
 import GameScreen from "./screens/GameScreen";
 import StartGameScreen from "./screens/StartGameScreen";
+import { useFonts } from "expo-font";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState("");
   const [gameIsOver, setGameIsOver] = useState(false);
+  const [fontsLoaded] = useFonts({
+    "poppins-bold": require("./assets/fonts/Poppins-Bold.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <Text>Loading...</Text>;
+  }
 
   let screen = <StartGameScreen setUserNumber={setUserNumber} />;
 
