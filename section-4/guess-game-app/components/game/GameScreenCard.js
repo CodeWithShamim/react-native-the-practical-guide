@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Alert } from "react-native";
 import { accentColor, primaryColor, whiteColor } from "../../constants/colors";
 import PrimaryButton from "../PrimaryButton";
 import { AntDesign } from "@expo/vector-icons";
+import { useEffect } from "react";
 
 const GameScreenCard = ({
   currentGuess,
@@ -12,12 +13,12 @@ const GameScreenCard = ({
   setGameIsOver,
 }) => {
   // -------generate new random nmr----------
+  let maxBoundary = 100;
+  let minBoundary = 1;
   const nextRandomNumber = (direction) => {
-    let maxBoundary = 100;
-    let minBoundary = 1;
     if (
-      (direction === "lower" && currentGuess < userNumber) ||
-      (direction === "greater" && currentGuess > userNumber)
+      (direction === "lower" && currentGuess < 2) ||
+      (direction === "greater" && currentGuess > 98)
     ) {
       Alert.alert("Don't lie!", "You know that this is wrong", [
         { text: "Sorry!", style: "cancel" },
@@ -63,15 +64,15 @@ const GameScreenCard = ({
       </View>
 
       {/* -------Game over btn---------- */}
-      <View style={styles.gameOverButton}>
+      {/* <View style={styles.gameOverButton}>
         <PrimaryButton
           style={styles.primaryButton}
           bgColor={primaryColor}
           onPress={handleGameOver}
         >
-          Game Over
+          Game Over!
         </PrimaryButton>
-      </View>
+      </View> */}
     </>
   );
 };
@@ -92,13 +93,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  gameOverButton: {
-    marginTop: 20,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  // gameOverButton: {
+  //   marginTop: 20,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
   primaryButton: {
     width: 330,
     paddingVertical: 10,
+    color: "red",
   },
 });

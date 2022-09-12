@@ -11,6 +11,7 @@ import { useFonts } from "expo-font";
 export default function App() {
   const [userNumber, setUserNumber] = useState("");
   const [gameIsOver, setGameIsOver] = useState(false);
+  const [totalGameRounds, setTotalGameRounds] = useState(0);
   const [fontsLoaded] = useFonts({
     "poppins-bold": require("./assets/fonts/Poppins-Bold.ttf"),
     "poppins-italic": require("./assets/fonts/Poppins-Italic.ttf"),
@@ -30,14 +31,17 @@ export default function App() {
         userNumber={userNumber}
         setUserNumber={setUserNumber}
         setGameIsOver={setGameIsOver}
+        setTotalGameRounds={setTotalGameRounds}
       />
     );
   }
   if (gameIsOver) {
     screen = (
       <EndGameScreen
+        userNumber={userNumber}
         setUserNumber={setUserNumber}
         setGameIsOver={setGameIsOver}
+        totalGameRounds={totalGameRounds}
       />
     );
   }

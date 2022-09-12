@@ -7,14 +7,14 @@ import {
 } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 import Title from "../components/Title";
-import {
-  accentColor,
-  primaryColor,
-  secondaryColor,
-  whiteColor,
-} from "../constants/colors";
+import { accentColor, secondaryColor, whiteColor } from "../constants/colors";
 
-const EndGameScreen = ({ setUserNumber, setGameIsOver }) => {
+const EndGameScreen = ({
+  userNumber,
+  setUserNumber,
+  setGameIsOver,
+  totalGameRounds,
+}) => {
   const hanldeStartGameAgain = () => {
     setUserNumber("");
     setGameIsOver(false);
@@ -32,8 +32,9 @@ const EndGameScreen = ({ setUserNumber, setGameIsOver }) => {
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.text}>
-          Your phone needed to <Text style={styles.textNumber}>0</Text> rounds
-          to guess the number <Text style={styles.textNumber}>55</Text>
+          Your phone needed to{" "}
+          <Text style={styles.textNumber}>{totalGameRounds}</Text> rounds to
+          guess the number <Text style={styles.textNumber}>{userNumber}</Text>
         </Text>
       </View>
       <View style={styles.btnContainer}>
