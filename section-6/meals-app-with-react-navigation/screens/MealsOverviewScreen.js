@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import React from "react";
 import { MEALS } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
@@ -17,14 +17,22 @@ const MealsOverviewScreen = ({ route }) => {
   };
 
   return (
-    <View>
+    <View style={styles.mealsContainer}>
       <FlatList
         data={displayedMeals}
         renderItem={renderMealItem}
         keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
       ></FlatList>
     </View>
   );
 };
 
 export default MealsOverviewScreen;
+
+const styles = StyleSheet.create({
+  mealsContainer: {
+    marginHorizontal: 10,
+    marginBottom: 20,
+  },
+});
