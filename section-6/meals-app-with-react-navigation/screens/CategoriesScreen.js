@@ -2,6 +2,7 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import React from "react";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryItem from "../components/CategoryItem";
+// import { useNavigation } from "@react-navigation/native";
 
 const CategoriesScreen = ({ navigation }) => {
   const categories = CATEGORIES;
