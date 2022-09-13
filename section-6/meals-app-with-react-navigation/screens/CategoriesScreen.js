@@ -3,10 +3,12 @@ import React from "react";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryItem from "../components/CategoryItem";
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({ navigation }) => {
   const categories = CATEGORIES;
 
-  const pressedHandle = (id) => {};
+  const pressedHandle = (id) => {
+    navigation.navigate("MealsOverview", { id: id });
+  };
 
   const renderCategoryItem = ({ item }) => {
     return (
@@ -26,7 +28,7 @@ const CategoriesScreen = () => {
         renderItem={renderCategoryItem}
         keyExtractor={(item) => item.id}
         numColumns={2}
-        showsHorizontalScrollIndicator
+        showsVerticalScrollIndicator={false}
       ></FlatList>
     </View>
   );
@@ -37,6 +39,5 @@ export default CategoriesScreen;
 const styles = StyleSheet.create({
   categoriesContainer: {
     flex: 1,
-    marginHorizontal: 14,
   },
 });
