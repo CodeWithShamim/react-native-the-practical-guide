@@ -29,7 +29,7 @@ const MealItem = ({ item }) => {
     if (imageUrl) {
       setTimeout(() => {
         setIsImageUrl(true);
-      }, 500);
+      }, 800);
     }
   }, [imageUrl]);
 
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: "#ffffff",
     elevation: 2,
-    borderRadius: 6,
+    borderRadius: 10,
   },
   buttonPressed: {
     opacity: 0.7,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 200,
-    borderRadius: 6,
+    borderRadius: 10,
   },
   title: {
     fontWeight: "bold",

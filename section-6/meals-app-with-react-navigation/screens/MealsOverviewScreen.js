@@ -32,7 +32,6 @@ export default MealsOverviewScreen;
 
 const styles = StyleSheet.create({
   mealsContainer: {
-    marginHorizontal: 10,
-    marginBottom: 20,
+    margin: 10,
   },
 });
