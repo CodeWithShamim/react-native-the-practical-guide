@@ -7,24 +7,16 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const MealItem = ({ item }) => {
   const [isImageUrl, setIsImageUrl] = useState(false);
+  const navigation = useNavigation();
+  const { id, title, affordability, complexity, imageUrl, duration } = item;
 
-  const {
-    title,
-    affordability,
-    complexity,
-    imageUrl,
-    duration,
-    ingredients,
-    steps,
-    isGlutenFree,
-    isVegan,
-    isVegetarian,
-    isLactoseFree,
-  } = item;
-
+  const handleMealItemDetails = () => {
+    navigation.navigate("MealDetails", { mealId: id });
+  };
   useEffect(() => {
     if (imageUrl) {
       setTimeout(() => {
@@ -36,6 +28,7 @@ const MealItem = ({ item }) => {
   return (
     <View style={styles.itemContainer}>
       <Pressable
+        onPress={handleMealItemDetails}
         android_ripple={{ color: "#ccc" }}
         style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
       >
@@ -69,7 +62,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     marginBottom: 20,
     backgroundColor: "#ffffff",
-    elevation: 2,
+    elevation: 3,
     borderRadius: 10,
   },
   buttonPressed: {
