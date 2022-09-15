@@ -21,11 +21,11 @@ export default function App() {
           headerTintColor: "#ffffff",
           headerStyle: { backgroundColor: "#c16f0b" },
           sceneContainerStyle: { backgroundColor: "#3f1477" },
+          // drawerContentStyle: { backgroundColor: "#3f1477" },
           drawerStyle: { backgroundColor: "#3f1477" },
-          drawerActiveTintColor: "#ffffff",
-          drawerInactiveTintColor: "#c16f0b",
+          drawerActiveTintColor: "#3f1477",
           drawerActiveBackgroundColor: "#c16f0b",
-          drawerInativeBackgroundColor: "#c16f0b",
+          drawerInactiveTintColor: "#ffffff",
         }}
       >
         <Drawer.Screen
