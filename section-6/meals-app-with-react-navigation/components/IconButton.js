@@ -3,13 +3,11 @@ import { Ionicons } from "@expo/vector-icons";
 
 const IconButton = ({ icon, size, color, onPress }) => {
   return (
-    <Pressable onPress={({ pressed }) => pressed && styles.pressed}>
-      <Ionicons
-        onPress={onPress}
-        name={icon}
-        size={size}
-        color={color}
-      ></Ionicons>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => pressed && styles.pressed}
+    >
+      <Ionicons name={icon} size={size} color={color}></Ionicons>
     </Pressable>
   );
 };
@@ -18,6 +16,6 @@ export default IconButton;
 
 const styles = StyleSheet.create({
   pressed: {
-    opacity: 0.7,
+    opacity: 0.6,
   },
 });
