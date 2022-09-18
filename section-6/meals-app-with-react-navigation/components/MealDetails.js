@@ -1,17 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 
 const MealDetails = ({ mealItem, textStyle }) => {
-  const {
-    affordability,
-    complexity,
-    duration,
-    ingredients,
-    steps,
-    isGlutenFree,
-    isVegan,
-    isVegetarian,
-    isLactoseFree,
-  } = mealItem;
+  const { affordability, complexity, duration } = mealItem;
 
   return (
     <View style={styles.details}>
